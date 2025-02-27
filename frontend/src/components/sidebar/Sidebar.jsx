@@ -3,9 +3,14 @@ import { useAuthStore } from "../../store/useAuthStore"
 
 import { Link } from "react-router-dom"
 
+import { FaHome } from "react-icons/fa";
+import { CgProfile } from "react-icons/cg";
+import { FaSignOutAlt } from "react-icons/fa";
+
+
 const Sidebar = () => {
 
-    let { logoutAuth } = useAuthStore()
+    let { authUser, logoutAuth } = useAuthStore()
 
     let handleLogout = () => {
         logoutAuth()
@@ -13,27 +18,27 @@ const Sidebar = () => {
 
 
     return (
-        <div className=' h-full w-[80px] fixed left-0 top-0 z-10 flex flex-col items-center justify-around bg-gray-800'>
-            <div className='w-[100%] h-[60%] flex items-center justify-center flex-col gap-1'>
-
-                <Link to='/' className='w-[50px] h-[50px] bg-black rounded-lg cursor-pointer' />
-                <Link to='/profile' className='w-[50px] h-[50px] bg-black rounded-lg cursor-pointer' />
+        <div className=' h-[90px] w-[100%] fixed left-0 bottom-0 z-10 flex flex-row  items-center justify-start bg-gray-800'>
 
 
+            <Link to='/' className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]'>
+                <FaHome color='white' size={20} />
+                <div className='text-white font-bold'>HOME</div>
+            </Link>
+
+            <Link to='/profile' className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]'>
+                <CgProfile color='white' size={20} />
+                <div className='text-white font-bold'>PROFILE</div>
+            </Link>
+
+
+
+            <div className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]' onClick={handleLogout}>
+                <FaSignOutAlt color='white' size={20} />
+                <div className='text-white font-bold'>LOGOUT</div>
             </div>
 
-            <div className='w-full mb-[30%] flex items-center justify-center '>
 
-                <div className="dropdown dropdown-right dropdown-end">
-                    <div tabIndex={0} role="button" className="btn m-1  bg-black"></div>
-
-                    <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow outline outline-[1px] outline-[rgba(0,0,0,0.4)]">
-                        <li className='text-red-600 font-bold' onClick={handleLogout}><a>Logout</a></li>
-                    </ul>
-
-                </div>
-
-            </div>
         </div>
     )
 }

@@ -9,8 +9,6 @@ export const useAuthStore = create((set) => ({
     isLoggingIn: false,
     isUpdatingProfile: false,
 
-    errorMsg: '',
-
     isCheckingAuth: true,
 
     checkAuth: async () => {
@@ -29,25 +27,22 @@ export const useAuthStore = create((set) => ({
     registerAuth: async ({ username, password }) => {
         try {
             let res = await axiosInstance.post('/auth/register', { username, password })
-            set({ isSigningUp: true })
-            console.log(res.data)
-
+            return { message: { success: 'User Registered.' } }
         } catch (error) {
-            set({ errorMsg: error.response?.data?.error })
-        } finally {
-            setTimeout(() => {
-                set({ isSigningUp: false })
-            }, 2000)
+
+            return { message: { error: error.response?.data?.error } };
         }
     },
 
     loginAuth: async ({ username, password }) => {
         try {
             let res = await axiosInstance.post('/auth/login', { username, password })
-
             set({ authUser: res.data })
+
+            return { message: { success: 'User Logged In.' } }
+
         } catch (error) {
-            console.log(error)
+            return { message: { error: error.response?.data?.error } };
         }
     },
 
@@ -61,7 +56,7 @@ export const useAuthStore = create((set) => ({
         }
     },
 
-    updateUser: async ({ username, profile }) => {  
+    updateUser: async ({ username, profile }) => {
         console.log('Ito')
         try {
             let res = await axiosInstance.post('/auth/update', { username, profile })
@@ -69,7 +64,7 @@ export const useAuthStore = create((set) => ({
             set({ isUpdatingProfile: true })
         } catch (error) {
             console.error(error)
-            set({errorMsg : error?.response?.data?.error})
+            set({ errorMsg: error?.response?.data?.error })
         } finally {
             setTimeout(() => {
                 set({ isUpdatingProfile: false })

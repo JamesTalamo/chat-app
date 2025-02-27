@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import { useAuthStore } from '../../store/useAuthStore.js';
 
+import { toast } from 'react-hot-toast'
+
 const LoginPage = () => {
 
   const { loginAuth } = useAuthStore()
@@ -15,10 +17,11 @@ const LoginPage = () => {
 
 
 
-  let submitForm = (e) => {
+  let submitForm = async (e) => {
     e.preventDefault()
-    loginAuth(formData)
-
+    const res = await loginAuth(formData)
+    { res.message?.success && toast.success(res.message?.success) }
+    { res.message?.error && toast.error(res.message?.error) }
   }
 
   let handleInputChange = (e) => {
@@ -28,10 +31,10 @@ const LoginPage = () => {
 
 
   return (
-    <div className='w-screen h-dvh bg-white relative flex items-center justify-center'>
+    <div className='w-screen h-dvh bg-gray-800 relative flex items-center justify-center'>
 
       <div className='w-[370px] z-[10]  flex items-center justify-center flex-col p-5'>
-        <div className='font-bold text-black'>Log in with your account</div>
+        <div className='font-bold text-black text-[25px] text-white'>Log in with your account</div>
 
         <form type='submit' className='w-[100%]  flex items-center justify-center flex-col gap-4 pt-5' onSubmit={submitForm}>
           <input type="text" placeholder="Username" className="input input-bordered w-full max-w-xs bg-white text-black" name='username' onChange={handleInputChange} />

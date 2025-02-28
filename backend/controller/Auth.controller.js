@@ -65,11 +65,13 @@ export const updateUser = async (req, res) => {
 
         let currentUser = await User.findById(user)
 
-        if (username !== currentUser.username) {
-            let usernameExist = await User.findOne({ username })
-            if (usernameExist) return res.status(400).json({ error: 'username is already taken.' })
+        if (username) {
+            if (username !== currentUser.username) {
+                let usernameExist = await User.findOne({ username })
+                if (usernameExist) return res.status(400).json({ error: 'username is already taken.' })
 
-            currentUser.username = username;
+                currentUser.username = username;
+            }
         }
 
         if (profile) {
@@ -87,9 +89,10 @@ export const updateUser = async (req, res) => {
         }
 
         await currentUser.save()
-        
+
         res.status(200).json(currentUser)
     } catch (error) {
+        console.log(error.message)
         return res.status(500).json({ error: 'Internal server error' })
     }
 }

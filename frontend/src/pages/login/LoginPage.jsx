@@ -17,11 +17,9 @@ const LoginPage = () => {
 
 
 
-  let submitForm = async (e) => {
+  let submitForm = (e) => {
     e.preventDefault()
-    const res = await loginAuth(formData)
-    { res.message?.success && toast.success(res.message?.success) }
-    { res.message?.error && toast.error(res.message?.error) }
+    loginAuth(formData)
   }
 
   let handleInputChange = (e) => {

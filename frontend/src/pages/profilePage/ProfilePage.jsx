@@ -47,7 +47,7 @@ const ProfilePage = () => {
 
         <div className="avatar">
           <div className="w-24 rounded-full">
-            <img src={authUser.profile} />
+            <img src={authUser.profile !== '' ? authUser.profile : './mypic.jpg'} />
           </div>
         </div>
 
@@ -76,7 +76,7 @@ const ProfilePage = () => {
 
       </div>
 
-    </div>
+    </div >
   )
 }
 

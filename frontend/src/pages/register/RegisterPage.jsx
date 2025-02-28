@@ -16,11 +16,10 @@ const RegisterPage = () => {
         password: ""
     })
 
-    let submitForm = async (e) => {
+    let submitForm = (e) => {
         e.preventDefault()
-        const res = await registerAuth(formData)
-        { res.message?.error && toast.error(res.message?.error) }
-        { res.message?.success && toast.error(res.message?.success) }
+        registerAuth(formData)
+
     }
 
     let handleInputChange = (e) => {
@@ -42,7 +41,7 @@ const RegisterPage = () => {
                 <div className='pt-5 text-white'> Already have an account? Login! </div>
 
                 <Link to='/login'>
-                    <button className="btn btn-sm" >Login</button>
+                    <button className="btn btn-sm">Login</button>
                 </Link>
 
             </div>

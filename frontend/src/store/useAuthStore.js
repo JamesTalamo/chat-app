@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { axiosInstance } from '../lib/axios.js'
+import { toast } from 'react-hot-toast'
 
 export const useAuthStore = create((set) => ({
     authUser: null,
@@ -27,10 +28,10 @@ export const useAuthStore = create((set) => ({
     registerAuth: async ({ username, password }) => {
         try {
             let res = await axiosInstance.post('/auth/register', { username, password })
-            return { message: { success: 'User Registered.' } }
+            toast.success('User registered')
         } catch (error) {
+            toast.error(error.response?.data?.error)
 
-            return { message: { error: error.response?.data?.error } };
         }
     },
 
@@ -39,10 +40,10 @@ export const useAuthStore = create((set) => ({
             let res = await axiosInstance.post('/auth/login', { username, password })
             set({ authUser: res.data })
 
-            return { message: { success: 'User Logged In.' } }
+            toast.success('User Logged In')
 
         } catch (error) {
-            return { message: { error: error.response?.data?.error } };
+            toast.error(error.response?.data?.error)
         }
     },
 
@@ -57,14 +58,12 @@ export const useAuthStore = create((set) => ({
     },
 
     updateUser: async ({ username, profile }) => {
-        console.log('Ito')
         try {
             let res = await axiosInstance.post('/auth/update', { username, profile })
             set({ authUser: res.data })
             set({ isUpdatingProfile: true })
         } catch (error) {
-            console.error(error)
-            set({ errorMsg: error?.response?.data?.error })
+            toast.error(error)
         } finally {
             setTimeout(() => {
                 set({ isUpdatingProfile: false })

@@ -38,7 +38,7 @@ const RegisterPage = () => {
 
                     <button className="btn btn-neutral bg-black w-[97%]">Register</button>
                 </form>
-                <div className='pt-5 text-white'> Already have an account? Login! </div>
+                <div className='text-white'> Already have an account? Login! </div>
 
                 <Link to='/login'>
                     <button className="btn btn-sm">Login</button>

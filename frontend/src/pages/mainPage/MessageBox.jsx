@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useChatStore } from '../../store/useChatStore.js'
+import MessageSkeleton from '../../components/skeleton/MessageSkeleton.jsx'
 
 const MessageBox = () => {
 
-  const { selectedUser, getMessages } = useChatStore()
+  const { selectedUser, getMessages, isMessagesLoading } = useChatStore()
 
   const [message, setMessage] = useState('')
 
@@ -30,9 +31,9 @@ const MessageBox = () => {
         </div>
 
       </div>
-      <div className='w-[100%] h-[80%] bg-green-500'>
+      {isMessagesLoading ? <MessageSkeleton /> : <div className='w-[100%] h-[80%] bg-green-500'>
 
-      </div>
+      </div>}
       <div className='w-[100%] h-[10%]'>
         <form className='flex items-center justify-around w-[100%] h-[100%]' onSubmit={handleSubmit}>
 

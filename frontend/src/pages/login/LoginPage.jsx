@@ -39,7 +39,7 @@ const LoginPage = () => {
           <input type="password" placeholder="Password" className="input input-bordered w-full max-w-xs bg-white text-black" name='password' onChange={handleInputChange} />
           <button className="btn btn-neutral bg-black w-[97%]">Login</button>
         </form>
-        <div className='pt-10 text-black'>Don't have an account? Register!</div>
+        <div className='text-white'>Don't have an account? Register!</div>
 
         <Link to='/register'>
           <button className="btn btn-sm text-black">Register</button>

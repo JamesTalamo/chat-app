@@ -25,6 +25,8 @@ export const getMesseges = async (req, res) => {
                 { senderId: userToChatId, receiverId: myId }
             ]
         })
+            .populate('senderId', 'profile username')  // Only fetch the profile field
+            .populate('receiverId', 'profile username');
 
         return res.status(200).json(messages)
     } catch (error) {
@@ -39,7 +41,7 @@ export const sendMessage = async (req, res) => {
         const { id: receiverId } = req.params
         const senderId = req.user._id
 
-        let imgUrl;
+        let imgUrl = ''
 
         // if (image) {
         //     const uploadResponse = await cloudinary.uploader.upload(image)

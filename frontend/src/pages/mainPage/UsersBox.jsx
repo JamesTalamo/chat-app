@@ -12,7 +12,7 @@ const UsersBox = () => {
     }, [getUsers])
 
     return (
-        <div className='h-[100%] w-[25%] flex items-center justify-start flex-col gap-[1px] overflow-y-scroll '>
+        <div className='h-[100%] w-[25%] flex items-center justify-start flex-col gap-[1px] overflow-y-scroll bg-gray-900'>
             {isUsersLoading ? <UsersSkeleton /> : (
                 users.map((user) => (
                     <div className='w-[100%] h-[90px]  flex items-center justify-center cursor-pointer flex-shrink-0' key={user._id} onClick={() => { setSelectedUser({ id: user._id, profile: user.profile, username: user.username }) }}>

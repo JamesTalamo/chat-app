@@ -17,7 +17,7 @@ const UsersSkeleton = () => {
                 <div className='w-[100%] h-[90px]  flex items-center justify-center cursor-pointer flex-shrink-0' >
                     <div className="skeleton h-14 w-14 shrink-0 rounded-full animate-pulse"></div> {/* Circle */}
                     <div className='w-[70%] p-[10px] text-white font-bold text-[18px]'>
-                        <div className="skeleton h-5 w-28 animate-pulse"></div>{/* Lines */}
+                        <div className="skeleton h-5 w-28 animate-pulse"></div>{/* Lines   */}
                     </div>
                 </div>
             </div>

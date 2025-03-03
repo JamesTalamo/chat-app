@@ -1,8 +1,12 @@
 import { create } from 'zustand'
 import { axiosInstance } from '../lib/axios.js'
 import { toast } from 'react-hot-toast'
+import { io } from 'socket.io-client'
 
-export const useAuthStore = create((set) => ({
+const socketUrl = import.meta.env.VITE_BACKEND_URL
+
+
+export const useAuthStore = create((set, get) => ({
     authUser: null,
 
 
@@ -12,10 +16,13 @@ export const useAuthStore = create((set) => ({
 
     isCheckingAuth: true,
 
+    socket: null,
+
     checkAuth: async () => {
         try {
             let res = await axiosInstance.get('/auth/me')
             set({ authUser: res.data })
+            get().connectSocket()
 
 
         } catch (error) {
@@ -29,6 +36,8 @@ export const useAuthStore = create((set) => ({
         try {
             let res = await axiosInstance.post('/auth/register', { username, password })
             toast.success('User registered')
+            get().connectSocket()
+
         } catch (error) {
             toast.error(error.response?.data?.error)
 
@@ -41,7 +50,7 @@ export const useAuthStore = create((set) => ({
             set({ authUser: res.data })
 
             toast.success('User Logged In')
-
+            get().connectSocket()
         } catch (error) {
             toast.error(error.response?.data?.error)
         }
@@ -51,6 +60,8 @@ export const useAuthStore = create((set) => ({
         try {
             let res = await axiosInstance.get('/auth/logout')
             set({ authUser: null })
+            get().disconnectSocket()
+
             return res.data
         } catch (error) {
             console.log(error)
@@ -69,7 +80,20 @@ export const useAuthStore = create((set) => ({
                 set({ isUpdatingProfile: false })
             }, 1000)
         }
-    }
+    },
 
+    connectSocket: async () => {
+        const { authUser } = get()
+
+        if (authUser !== null) {
+            const socket = io(socketUrl)
+            socket.connect()
+        }
+
+
+    },
+    disconnectSocket: async () => {
+
+    }
 
 }))

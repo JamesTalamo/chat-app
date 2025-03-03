@@ -17,7 +17,8 @@ import msgRoutes from './routes/Message.routes.js'
 
 //Main Server
 import express from 'express'
-const app = express()
+// const app = express()
+import { app, server } from './library/socket.js'
 
 app.use(cors({
     origin: ['http://localhost:5173'],
@@ -32,7 +33,8 @@ app.use('/api/auth', authRoutes)
 app.use('/api/message', msgRoutes)
 
 const PORT = process.env.PORT || 3000
-app.listen(PORT, () => {
+
+server.listen(PORT, () => {
     console.log(`Connected to PORT ${PORT}`)
     connectDb()
 })

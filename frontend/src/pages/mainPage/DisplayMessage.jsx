@@ -12,7 +12,7 @@ const DisplayMessage = () => {
     const { authUser } = useAuthStore()
 
     // console.log(messages[0].createdAt)
-    console.log(messages)
+    // console.log(messages)
 
     return (
         <div className='w-[100%] h-[80%] px-[3%]'>
@@ -55,7 +55,6 @@ const DisplayMessage = () => {
                                             alt={message.senderId.profile}
                                             src={message.senderId.profile} />
                                     </div>
-                                    {console.log(message)}
                                 </div>
                                 <div className="chat-header">
 

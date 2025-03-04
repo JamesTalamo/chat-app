@@ -85,7 +85,7 @@ export const useAuthStore = create((set, get) => ({
     },
 
     connectSocket: async () => {
-        const { authUser, socket } = get()
+        const { authUser } = get()
 
         if (authUser !== null) {
             const socket = io(socketUrl, {

@@ -8,7 +8,7 @@ import { useAuthStore } from '../../store/useAuthStore.js'
 
 const MessageBox = () => {
 
-  const { selectedUser, getMessages, isMessagesLoading, sendMessage, messages } = useChatStore()
+  const { selectedUser, getMessages, isMessagesLoading, sendMessage, subscribeToMessages, unsubscribeFromMessages } = useChatStore()
 
   const { onlineUsers } = useAuthStore()
 
@@ -17,7 +17,14 @@ const MessageBox = () => {
 
   useEffect(() => {
     getMessages(selectedUser.id)
-  }, [selectedUser])
+
+    subscribeToMessages()
+
+    return () => unsubscribeFromMessages()
+
+  }, [selectedUser, subscribeToMessages, unsubscribeFromMessages])
+  // }, [selectedUser])
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -39,7 +46,7 @@ const MessageBox = () => {
         <div className='font-bold text-white pr-[15px]'>
           {selectedUser?.username}
         </div>
-        
+
         <div className={onlineUsers.includes(selectedUser._id) ? 'text-green-500 text-[13px] font-bold' : 'text-gray-800 text-[13px] font-bold'}>
           {onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}
         </div>

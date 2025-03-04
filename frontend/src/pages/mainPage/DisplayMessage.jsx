@@ -12,10 +12,10 @@ const DisplayMessage = () => {
     const { authUser } = useAuthStore()
 
     // console.log(messages[0].createdAt)
-    // console.log(messages)
+    console.log(messages)
 
     return (
-        <div className='w-[100%] h-[80%] px-[3%]'>
+        <div className='w-[100%] h-[80%] px-[3%] overflow-y-scroll'>
             {messages.length === 0 ?
                 <div className='w-[100%] h-[100%] flex items-center justify-center font-bold text-white flex-col text-[18px]'>
                     <TiMessages />

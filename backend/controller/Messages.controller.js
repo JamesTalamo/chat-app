@@ -1,5 +1,6 @@
 import User from "../model/Users.js"
 import Message from "../model/Message.js"
+import { getReceiverSocketId, io } from "../library/socket.js"
 
 export const usersForSidebar = async (req, res) => {
     try {
@@ -57,9 +58,19 @@ export const sendMessage = async (req, res) => {
 
         await newMessage.save()
 
-        //todo: realtime functionality
+        // 🔥 Populate sender and receiver details
+        const populatedMessage = await newMessage.populate([
+            { path: "senderId", select: "profile username" },
+            { path: "receiverId", select: "profile username" },
+        ]);
 
-        res.status(201).json(newMessage)
+        //todo: realtime functionality
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("newMessage", populatedMessage);
+        }
+
+        res.status(201).json(populatedMessage);
 
     } catch (error) {
         console.error(error.message)

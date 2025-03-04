@@ -14,8 +14,6 @@ const UsersBox = () => {
         getUsers()
     }, [getUsers])
 
-    console.log({ onlineUsers })
-
     return (
         <div className='h-[100%] w-[25%] flex items-center justify-start flex-col gap-[1px] overflow-y-scroll bg-gray-900'>
             {isUsersLoading ? <UsersSkeleton /> : (

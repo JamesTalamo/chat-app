@@ -1,8 +1,9 @@
+import dotenv from 'dotenv'
+dotenv.config()
+
 //External Import
 import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv'
 import cors from 'cors'
-dotenv.config()
 import { cloudinaryConfig } from './library/cloudinary.js'
 cloudinaryConfig() // cloudinary config
 
@@ -21,7 +22,7 @@ import express from 'express'
 import { app, server } from './library/socket.js'
 
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    origin: [process.env.FRONTEND_URL, 'http://localhost:5173'],
     credentials: true
 }))
 

@@ -14,6 +14,8 @@ export const useAuthStore = create((set, get) => ({
     isLoggingIn: false,
     isUpdatingProfile: false,
 
+    onlineUsers: [],
+
     isCheckingAuth: true,
 
     socket: null,
@@ -83,17 +85,32 @@ export const useAuthStore = create((set, get) => ({
     },
 
     connectSocket: async () => {
-        const { authUser } = get()
+        const { authUser, socket } = get()
 
         if (authUser !== null) {
-            const socket = io(socketUrl)
-            socket.connect()
-        }
+            const socket = io(socketUrl, {
+                query: {
+                    userId: authUser._id
+                }
 
+
+            })
+            socket.connect()
+
+            set({ socket: socket })
+            socket.on("getOnlineUsers", (users) => {
+                set({ onlineUsers: users })
+            })
+        }
 
     },
     disconnectSocket: async () => {
+        const { authUser, socket } = get()
 
+        if (authUser === null && socket) {
+            socket.disconnect();
+            set({ socket: null });
+        }
     }
 
 }))

@@ -3,10 +3,15 @@ import { useChatStore } from '../../store/useChatStore.js'
 import MessageSkeleton from '../../components/skeleton/MessageSkeleton.jsx'
 import DisplayMessage from './DisplayMessage.jsx'
 
+import { useAuthStore } from '../../store/useAuthStore.js'
+
 
 const MessageBox = () => {
 
   const { selectedUser, getMessages, isMessagesLoading, sendMessage, messages } = useChatStore()
+
+  const { onlineUsers } = useAuthStore()
+
 
   const [message, setMessage] = useState('')
 
@@ -31,8 +36,12 @@ const MessageBox = () => {
           </div>
         </div>
 
-        <div className='font-bold text-white'>
+        <div className='font-bold text-white pr-[15px]'>
           {selectedUser?.username}
+        </div>
+        
+        <div className={onlineUsers.includes(selectedUser._id) ? 'text-green-500 text-[13px] font-bold' : 'text-gray-800 text-[13px] font-bold'}>
+          {onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}
         </div>
 
       </div>

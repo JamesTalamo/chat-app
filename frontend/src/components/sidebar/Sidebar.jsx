@@ -52,8 +52,8 @@ const Sidebar = () => {
                 </div>
             </dialog>
 
-            <div className='btn w-[50%] cursor-pointer mx-[5px] bg-red-500' onClick={handleLogout}>
-                <FaSignOutAlt color="black" size={20} />
+            <div className='btn w-[50%] cursor-pointer mx-[5px] text-red-500' onClick={handleLogout}>
+                <FaSignOutAlt color="red" size={20} />
                 logout
             </div>
 

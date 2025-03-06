@@ -6,7 +6,7 @@ const generateCookie = async (userId, res) => {
 
     res.cookie('jwt', token, {
         maxAge: 14 * 24 * 60 * 60 * 1000,
-        httpOnly: true, // false pag production
+        httpOnly: false, // false pag production
         sameSite: 'none',
         secure: true // FALSE if console test api endpoints, TRUE if frontend connect api endpoints
     })

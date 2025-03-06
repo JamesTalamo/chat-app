@@ -11,9 +11,6 @@ const DisplayMessage = () => {
     const { messages } = useChatStore()
     const { authUser } = useAuthStore()
 
-    // console.log(messages[0].createdAt)
-    console.log(messages)
-
     return (
         <div className='w-[100%] h-[80%] px-[3%] overflow-y-scroll'>
             {messages.length === 0 ?
@@ -26,15 +23,17 @@ const DisplayMessage = () => {
                 :
                 (
                     messages.map((message, index) => (
+
                         message.senderId._id === authUser._id ?
 
-
-                            < div className="chat chat-end" key={index}>
+                            < div className="chat chat-end" key={index} >
+                                {console.log(message)}
                                 <div className="chat-image avatar">
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt={message.senderId.username}
-                                            src={message.senderId.profile} />
+                                            src={message.senderId.profile !== '' ? message.senderId.profile : './mypic.jpg'}
+                                        />
                                     </div>
                                 </div>
                                 <div className="chat-header">
@@ -44,8 +43,6 @@ const DisplayMessage = () => {
                                 <div className="chat-bubble">{message.text}</div>
                             </div >
 
-
-
                             :
 
                             < div className="chat chat-start" key={index} >
@@ -53,7 +50,8 @@ const DisplayMessage = () => {
                                     <div className="w-10 rounded-full">
                                         <img
                                             alt={message.senderId.profile}
-                                            src={message.senderId.profile} />
+                                            src={message.senderId.profile !== '' ? message.senderId.profile : './mypic.jpg'}
+                                        />
                                     </div>
                                 </div>
                                 <div className="chat-header">

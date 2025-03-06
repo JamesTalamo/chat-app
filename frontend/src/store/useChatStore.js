@@ -28,6 +28,7 @@ export const useChatStore = create((set, get) => ({
         try {
             set({ isMessagesLoading: true })
             const res = await axiosInstance.get(`/message/${userId}`)
+
             set({ messages: res.data })
 
             set({ isMessagesLoading: false })
@@ -50,25 +51,20 @@ export const useChatStore = create((set, get) => ({
     },
 
     subscribeToMessages: () => {
-        const { selectedUser, messages} = get()
+        const { selectedUser } = get()
         if (!selectedUser) return
 
         const socket = useAuthStore.getState().socket;
-        if (!socket) {
-            alert("Socket is not connected yet!");
-            return;
-        }
 
-        console.log(messages)
 
         socket.on("newMessage", (newMessage) => {
-            console.log(newMessage)
-            const isMessageSentFromSelectedUser = newMessage.senderId === selectedUser.id;
-            if (!isMessageSentFromSelectedUser) return;
+          
+            const pagSama = [...get().messages, newMessage]
 
             set({
-                messages: [...get().messages, newMessage],
-            });
+                messages: pagSama
+            })
+
         });
 
 

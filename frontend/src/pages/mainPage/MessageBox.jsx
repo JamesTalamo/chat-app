@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useChatStore } from '../../store/useChatStore.js'
 import MessageSkeleton from '../../components/skeleton/MessageSkeleton.jsx'
 import DisplayMessage from './DisplayMessage.jsx'
@@ -8,7 +8,7 @@ import { useAuthStore } from '../../store/useAuthStore.js'
 
 const MessageBox = () => {
 
-  const { selectedUser, getMessages, isMessagesLoading, sendMessage, subscribeToMessages, unsubscribeFromMessages } = useChatStore()
+  const { selectedUser, getMessages, isMessagesLoading, sendMessage, subscribeToMessages, unsubscribeFromMessages, messages } = useChatStore()
 
   const { onlineUsers } = useAuthStore()
 
@@ -22,8 +22,7 @@ const MessageBox = () => {
 
     return () => unsubscribeFromMessages()
 
-  }, [selectedUser, subscribeToMessages, unsubscribeFromMessages])
-  // }, [selectedUser])
+  }, [selectedUser, getMessages, subscribeToMessages, unsubscribeFromMessages])
 
 
   const handleSubmit = (e) => {
@@ -31,6 +30,11 @@ const MessageBox = () => {
 
     sendMessage(message)
     setMessage('')
+
+    setTimeout(() => {
+      getMessages(selectedUser.id); // Refetch messages
+    }, 500)
+
   }
 
   return (
@@ -47,8 +51,8 @@ const MessageBox = () => {
           {selectedUser?.username}
         </div>
 
-        <div className={onlineUsers.includes(selectedUser._id) ? 'text-green-500 text-[13px] font-bold' : 'text-gray-800 text-[13px] font-bold'}>
-          {onlineUsers.includes(selectedUser._id) ? 'Online' : 'Offline'}
+        <div className={onlineUsers.includes(selectedUser.id) ? 'text-green-500 text-[13px] font-bold' : 'text-gray-800 text-[13px] font-bold'}>
+          {onlineUsers.includes(selectedUser.id) ? 'Online' : 'Offline'}
         </div>
 
       </div>

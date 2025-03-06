@@ -39,15 +39,17 @@ const MessageBox = () => {
 
   return (
     <div className='w-[75%] h-[100%]   flex items-center justify-center flex-col'>
-      <div className='w-[100%] h-[10%]  flex items-center justify-start bg-gray-900'>
 
-        <div className="avatar px-[3%]">
+      <div className='w-[100%] h-[10%]  flex items-center justify-start bg-[#FFFFFF]'>
+      
+
+        <div className="avatar ">
           <div className="w-10 rounded-full">
-            <img src={selectedUser.profile ? selectedUser.profile : './mypic.jpg'} />
+            <img src={selectedUser.profile ? selectedUser.profile : './avatar.png'} />
           </div>
         </div>
 
-        <div className='font-bold text-white pr-[15px]'>
+        <div className='font-bold pr-[2%] text-[#011627]'>
           {selectedUser?.username}
         </div>
 

@@ -8,6 +8,10 @@ import { CgProfile } from "react-icons/cg";
 import { FaSignOutAlt } from "react-icons/fa";
 
 
+
+import ProfilePage from "../../pages/profilePage/ProfilePage";
+
+
 const Sidebar = () => {
 
     let { authUser, logoutAuth } = useAuthStore()
@@ -19,35 +23,36 @@ const Sidebar = () => {
 
 
     return (
-        <div className=' h-[70px] w-[100%] fixed left-0 bottom-0 z-10 flex flex-row  items-center justify-start bg-gray-800'>
+        <div className=' h-[100%] w-[15%] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
 
 
-            <Link to='/' className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]'>
-                <FaHome color='white' size={20} />
-                <div className='text-white font-bold'>HOME</div>
+            <Link to='/' className='btn w-[50%] '>
+                <FaHome color='black' size={20} />
+                <div className=' font-bold text-black'>HOME</div>
             </Link>
 
-            <Link to='/profile' className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]'>
-                <CgProfile color='white' size={20} />
-                <div className='text-white font-bold'>PROFILE</div>
-            </Link>
+            <button className="btn w-[50%]" onClick={() => document.getElementById('my_modal_1').showModal()}>
+                <CgProfile color="black" size={20} /> Edit Profile
+            </button>
+
+            <dialog id="my_modal_1" className="modal">
+                <div className="modal-box w-[50vw] h-[70vh] flex-col flex items-center justify-center">
 
 
+                    < ProfilePage />
 
-            <div className='w-[150px] h-[50px] bg-gray-600 rounded-xl flex items-center justify-around cursor-pointer mx-[5px]' onClick={handleLogout}>
-                <FaSignOutAlt color='white' size={20} />
-                <div className='text-white font-bold'>LOGOUT</div>
-
-            </div>
-
-            <div className='absolute right-[5%] w-[150px] h-[100%] flex items-center justify-around'>
-                <div className='font-bold text-white'>{authUser?.username}</div>
-
-                <div className="avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={authUser.profile !== '' ? authUser.profile : './mypic.jpg'} />
+                    <div className="modal-action">
+                        <form method="dialog">
+                            <button className="btn">Close</button>
+                        </form>
                     </div>
+
                 </div>
+            </dialog>
+
+            <div className='btn w-[50%] cursor-pointer mx-[5px]' onClick={handleLogout}>
+                <FaSignOutAlt color="black" size={20} />
+                logout
             </div>
 
 

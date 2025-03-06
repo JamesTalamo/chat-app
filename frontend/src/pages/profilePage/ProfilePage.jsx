@@ -41,13 +41,13 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className='w-[100vw] h-[100vh] bg-gray-600  flex items-center justify-center'>
+    <div className='w-[100%] h-[100%]   flex items-center justify-center'>
 
-      <div className='w-[50%] h-[60%] bg-gray-800 rounded-3xl flex items-center justify-start flex-col p-[50px] '>
+      <div className='h-[100%] w-[100%]   flex items-center justify-start flex-col     bg-red-500 '>
 
         <div className="avatar">
           <div className="w-24 rounded-full">
-            <img src={authUser.profile !== '' ? authUser.profile : './mypic.jpg'} />
+            <img src={authUser.profile !== '' ? authUser.profile : './avatar.jpg'} />
           </div>
         </div>
 

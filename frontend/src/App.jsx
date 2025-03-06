@@ -35,7 +35,7 @@ function App() {
   return (
     <div className='w-screen h-dvh flex justify-center items-end'>
 
-      {authUser && <Sidebar />}
+      {/* {authUser && <Sidebar />} nasa usersBox.jsx na  yung sidebar*/}
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -54,10 +54,10 @@ function App() {
         <Route path='/login' element={authUser ? <Navigate to='/' /> : <LoginPage />} />
         <Route path='/register' element={authUser ? <Navigate to='/' /> : < RegisterPage />} />
 
-        <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to='/' />} />
+        {/* <Route path='/profile' element={authUser ? <ProfilePage /> : <Navigate to='/' />} /> */}
 
 
-
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </div>
   )

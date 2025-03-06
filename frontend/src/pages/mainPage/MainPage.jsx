@@ -9,10 +9,12 @@ const MainPage = () => {
 
 
   return (
-    <div className='w-full h-[100vh] overflow-x-hidden flex items-center justify-center bg-gray-600'>
-      <div className='h-[80%] w-[70%] bg-gray-800 overflow-hidden flex items-center justify-between'>
+    <div className='w-full h-[100vh] overflow-x-hidden flex items-center justify-center bg-white'>
+      <div className='h-[100%] w-[100%] bg-[#8BABD8] overflow-hidden flex items-center justify-between bg-[#8BABD8] relative bg-[url("/authAssets/bg_print.png")] bg-cover bg-center bg-fixed'>
+
+
         <UsersBox />
-       
+
         {selectedUser && <MessageBox />}
 
       </div>

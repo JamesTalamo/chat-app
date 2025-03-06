@@ -2,7 +2,8 @@ import React from 'react';
 
 const MessageSkeleton = () => {
     return (
-        <div className='w-[100%] h-[80%] flex flex-col gap-4 px-[3%]'>
+        <div className='w-[100%] h-[80%] flex flex-col gap-4 px-[3%] bg-[#8BABD8] relative bg-[url("/authAssets/bg_print.png")] bg-cover bg-center bg-fixed'>
+
 
             {/* Left */}
             <div className="flex w-52 flex-col gap-4 self-start">

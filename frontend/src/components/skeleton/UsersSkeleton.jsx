@@ -2,7 +2,7 @@ import React from 'react';
 
 const UsersSkeleton = () => {
     return (
-        <div className='h-[100%] w-[100%] flex items-center justify-start flex-col gap-[1px] bg-gray-900 '>
+        <div className='h-[100%] w-[100%] flex items-center justify-start flex-col gap-[1px] bg-[#FFFFFF] '>
 
             <div className='w-[100%] h-[90px]  flex items-center justify-center cursor-pointer flex-shrink-0'  > {/* Skeleton */}
                 <div className='w-[100%] h-[90px]  flex items-center justify-center cursor-pointer flex-shrink-0' >

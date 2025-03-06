@@ -18,7 +18,9 @@ const Sidebar = () => {
 
     let handleLogout = () => {
         logoutAuth()
-        window.location.reload()
+        setTimeout(() => {
+            window.location.reload()
+        }, 1000)
     }
 
 
@@ -50,7 +52,7 @@ const Sidebar = () => {
                 </div>
             </dialog>
 
-            <div className='btn w-[50%] cursor-pointer mx-[5px]' onClick={handleLogout}>
+            <div className='btn w-[50%] cursor-pointer mx-[5px] bg-red-500' onClick={handleLogout}>
                 <FaSignOutAlt color="black" size={20} />
                 logout
             </div>

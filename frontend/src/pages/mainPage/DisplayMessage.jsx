@@ -27,7 +27,6 @@ const DisplayMessage = () => {
                         message.senderId._id === authUser._id ?
 
                             < div className="chat chat-end" key={index} >
-                                {console.log(message)}
                                 <div className="chat-image avatar">
                                     <div className="w-10 rounded-full">
                                         <img

@@ -26,7 +26,9 @@ const MessageBox = () => {
 
 
   const handleSubmit = (e) => {
+    
     e.preventDefault()
+    if(!message) return 
 
     sendMessage(message)
     setMessage('')
@@ -40,7 +42,7 @@ const MessageBox = () => {
   return (
     <div className='w-[75%] h-[100%]   flex items-center justify-center flex-col'>
 
-      <div className='w-[100%] h-[10%]  flex items-center justify-start bg-[#FFFFFF]'>
+      <div className='w-[100%] h-[10%] px-[1%] flex items-center justify-start bg-[#FFFFFF]'>
       
 
         <div className="avatar ">
@@ -49,7 +51,7 @@ const MessageBox = () => {
           </div>
         </div>
 
-        <div className='font-bold pr-[2%] text-[#011627]'>
+        <div className='font-bold px-[1%] text-[#011627]'>
           {selectedUser?.username}
         </div>
 
@@ -65,7 +67,7 @@ const MessageBox = () => {
 
           <input type="text" placeholder="Type here" className="input input-bordered w-[90%]" value={message} onChange={(e) => setMessage(e.target.value)} />
 
-          <button className="btn btn-active" type='submit'>Submit</button>
+          <button className="btn btn-soft" type='submit'>Submit</button>
 
         </form>
       </div>

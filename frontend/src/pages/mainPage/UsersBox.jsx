@@ -1,5 +1,5 @@
 import { useChatStore } from '../../store/useChatStore.js'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import UsersSkeleton from '../../components/skeleton/UsersSkeleton.jsx'
 import { useAuthStore } from '../../store/useAuthStore.js'
 
@@ -20,15 +20,15 @@ const UsersBox = () => {
 
     return (
         <div className='h-[100%] w-[25%] bg-[#FFFFFF] '>
-            
+
             {/*Ito yung sidebar*/}
-            <div className='w-[100%]  p-[6%] '>
+            <div className='w-[100%]  p-[6%]  '>
 
                 <div className="drawer">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
                         {/* Page content here */}
-                        <label htmlFor="my-drawer" className="btn btn-default    drawer-button">
+                        <label htmlFor="my-drawer" className="btn btn-soft    drawer-button">
                             <RxHamburgerMenu />
                         </label>
                     </div>

@@ -43,7 +43,7 @@ const ProfilePage = () => {
   return (
     <div className='w-[100%] h-[100%]   flex items-center justify-center'>
 
-      <div className='h-[100%] w-[100%]   flex items-center justify-start flex-col     bg-red-500 '>
+      <div className='h-[100%] w-[100%]   flex items-center justify-start flex-col gap-[5%] '>
 
         <div className="avatar">
           <div className="w-24 rounded-full">
@@ -53,7 +53,7 @@ const ProfilePage = () => {
 
 
 
-        <form type='submit' onSubmit={handleSubmit}>
+        <form type='submit' className='flex items-center justify-start flex-col w-[100%] h-[100%] gap-[5%] px-[15%]' onSubmit={handleSubmit}>
 
 
           <input type="file" className="file-input file-input-ghost w-full max-w-xs text-white" name='profile' onChange={handleImgChange} />

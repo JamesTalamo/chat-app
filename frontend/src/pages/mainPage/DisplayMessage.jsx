@@ -49,7 +49,7 @@ const DisplayMessage = () => {
                                         : message.senderId.username
                                     }
                                 </span>{" "}
-                                {format(message.createdAt)}
+                                {format(message.createdAt)} {/*Time */}
                             </time>
                         </div>
                         <div className="chat-bubble">{message.text}</div>

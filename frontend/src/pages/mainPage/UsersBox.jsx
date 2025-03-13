@@ -21,13 +21,13 @@ const UsersBox = () => {
     return (
         <div className='h-[100%] w-[25%] bg-[#FFFFFF] '>
 
-            {/*Ito yung sidebar*/}
-            <div className='w-[100%]  p-[6%]  '>
+
+            <div className='w-[100%] p-[20%] lg:p-[8%] '>
 
                 <div className="drawer">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
-                        {/* Page content here */}
+
                         <label htmlFor="my-drawer" className="btn btn-soft    drawer-button">
                             <RxHamburgerMenu />
                         </label>
@@ -45,12 +45,12 @@ const UsersBox = () => {
                 {isUsersLoading ? <UsersSkeleton /> : (
                     users.map((user) => (
                         <div
-                            className='w-[100%] h-[90px] flex items-center justify-center cursor-pointer flex-shrink-0 border-y border-gray-300'
+                            className='w-[100%] h-[90px] flex items-center justify-center cursor-pointer flex-shrink-0 border-y border-gray-300  '
                             key={user._id}
                             onClick={() => setSelectedUser({ id: user._id, profile: user.profile, username: user.username })}
                         >
                             <div className="avatar relative">
-                                <div className="max-w-10 rounded-full">
+                                <div className="w-10  rounded-full">
                                     <img src={user.profile !== '' ? user.profile : './avatar.png'} />
                                 </div>
                                 {onlineUsers.includes(user._id) && (
@@ -58,7 +58,7 @@ const UsersBox = () => {
                                 )}
                             </div>
 
-                            <div className='w-[70%] p-[10px] font-bold text-[13px] text-[#011627]'>
+                            <div className="w-[70%] p-[10px] font-bold text-[13px] text-[#011627] hidden sm:inline ">
                                 {user.username}
                                 <div className={onlineUsers.includes(user._id) ? 'text-green-500 text-[13px]' : 'text-gray-800 text-[13px]'}>
                                     {onlineUsers.includes(user._id) ? 'Online' : 'Offline'}

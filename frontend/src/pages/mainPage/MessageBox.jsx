@@ -40,7 +40,7 @@ const MessageBox = () => {
   }
 
   return (
-    <div className='w-[75%] h-[100%]   flex items-center justify-center flex-col'>
+    <div className='w-[100%] h-[100%]   flex items-center justify-center flex-col'>
 
       <div className='w-[100%] h-[10%] px-[1%] flex items-center justify-start bg-[#FFFFFF]'>
       

@@ -27,14 +27,6 @@ const Sidebar = () => {
     return (
         <div className=' h-[100%] w-[15%] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
 
-
-            <Link to='/' className='w-[50%]'>
-                <button className="btn btn-soft w-[100%]">
-                    <FaHome color='black' size={20} />
-                    <div className=' font-bold text-black'>HOME</div>
-                </button>
-            </Link>
-
             <button className="btn btn-soft w-[50%]" onClick={() => document.getElementById('my_modal_1').showModal()}>
                 <CgProfile color="black" size={20} /> Edit Profile
             </button>

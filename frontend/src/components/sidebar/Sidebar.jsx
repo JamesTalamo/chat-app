@@ -28,7 +28,7 @@ const Sidebar = () => {
             </button>
 
             <dialog id="my_modal_1" className="modal">
-                <div className="modal-box w-[50vw] h-[70vh] flex-col flex items-center justify-center">
+                <div className="modal-box max-w-[500px] w-[90%] h-[70vh] flex-col flex items-center justify-center">
 
 
                     < ProfilePage />

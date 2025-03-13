@@ -47,7 +47,7 @@ const ProfilePage = () => {
 
         <div className="avatar">
           <div className="w-24 rounded-full">
-            <img src={authUser.profile !== '' ? authUser.profile : './avatar.jpg'} />
+            <img src={authUser?.profile !== '' ? authUser?.profile : './avatar.jpg'} />
           </div>
         </div>
 

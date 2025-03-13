@@ -39,11 +39,7 @@ export const LoginUser = async (req, res) => {
 
     generateCookie(user._id, res)
 
-    res.status(200).json({
-        _id: user._id,
-        username: user.username,
-        password: user.password
-    });
+    res.status(200).json(user);
 }
 
 export const LogoutUser = async (req, res) => {

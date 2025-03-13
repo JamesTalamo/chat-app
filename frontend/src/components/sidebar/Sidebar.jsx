@@ -1,9 +1,5 @@
 
 import { useAuthStore } from "../../store/useAuthStore"
-
-import { Link } from "react-router-dom"
-
-import { FaHome } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { FaSignOutAlt } from "react-icons/fa";
 
@@ -14,7 +10,7 @@ import ProfilePage from "../../pages/profilePage/ProfilePage";
 
 const Sidebar = () => {
 
-    let { authUser, logoutAuth } = useAuthStore()
+    let { logoutAuth } = useAuthStore()
 
     let handleLogout = () => {
         logoutAuth()
@@ -25,7 +21,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className=' h-[100%] w-[15%] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
+        <div className=' h-[100%] w-[300px] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
 
             <button className="btn btn-soft w-[50%]" onClick={() => document.getElementById('my_modal_1').showModal()}>
                 <CgProfile color="black" size={20} /> Edit Profile

@@ -50,7 +50,7 @@ const UsersBox = () => {
                             onClick={() => setSelectedUser({ id: user._id, profile: user.profile, username: user.username })}
                         >
                             <div className="avatar relative">
-                                <div className="w-14 rounded-full">
+                                <div className="max-w-10 rounded-full">
                                     <img src={user.profile !== '' ? user.profile : './avatar.png'} />
                                 </div>
                                 {onlineUsers.includes(user._id) && (
@@ -58,7 +58,7 @@ const UsersBox = () => {
                                 )}
                             </div>
 
-                            <div className='w-[70%] p-[10px] font-bold text-[18px] text-[#011627]'>
+                            <div className='w-[70%] p-[10px] font-bold text-[13px] text-[#011627]'>
                                 {user.username}
                                 <div className={onlineUsers.includes(user._id) ? 'text-green-500 text-[13px]' : 'text-gray-800 text-[13px]'}>
                                     {onlineUsers.includes(user._id) ? 'Online' : 'Offline'}

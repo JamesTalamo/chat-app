@@ -44,7 +44,7 @@ const LoginPage = () => {
 
         <div className='z-10'>
           <Link to='/register'>
-            <button className="btn btn-sm text-black ">Register</button>
+            <button className="btn btn-soft btn-sm text-black ">Register</button>
           </Link>
         </div>
 

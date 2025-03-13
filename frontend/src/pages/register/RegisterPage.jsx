@@ -44,7 +44,7 @@ const RegisterPage = () => {
 
                 <div className='z-10'>
                     <Link to='/login'>
-                        <button className="btn btn-sm">Login</button>
+                    <button className="btn btn-soft btn-sm text-black ">Login</button>
                     </Link>
                 </div>
 

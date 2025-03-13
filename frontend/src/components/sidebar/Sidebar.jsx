@@ -21,7 +21,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className=' h-[100%] w-[300px] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
+        <div className=' h-[100%] w-[200px] left-0 bottom-0 z-50 flex flex-col gap-[15px]  items-center justify-end bg-white py-[5%]'>
 
             <button className="btn btn-soft w-[50%]" onClick={() => document.getElementById('my_modal_1').showModal()}>
                 <CgProfile color="black" size={20} /> Edit Profile
